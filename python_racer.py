@@ -6,14 +6,33 @@ class PythonRacer:
         self.player1_position = 0
         self.player2_position = 0
     def finished(self):
-        self
+        if self.player1_position == self.length - 1:
+            return True
+        elif self.player2_position == self.length - 1:
+            return True
+        else:
+            return False
 
     def winner(self):
-        self
+        if self.player1_position == self.length - 1 and self.player2_position == self.length - 1:
+            print("It's a tie!")
+        elif self.player1_position == self.length - 1:
+            print('Player 1 is the winner!')
+        elif self.player2_position == self.length - 1:
+            print('Player 2 is the winner!')
+        else:
+            print('How did I get here?')
+
 
     def advance_players(self):
         self.player1_position += self.die.roll()
         self.player2_position += self.die.roll()
+        if self.player1_position >= self.length:
+           self.player1_position = self.length - 1
+        
+        if self.player2_position >= self.length:
+           self.player2_position = self.length - 1    
+
 
     def board_visualization(self):
         player1_track = [' '] * self.length
